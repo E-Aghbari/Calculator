@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
@@ -11,63 +12,63 @@
 </head>
 
 <body>
+
   <div class="container">
     <span class="container border position-absolute top-50 start-50 translate-middle"
       style="max-height: 1000px; max-width:440px;">
 
-      <div class="container p-1">
-        <input class="form-control " type="text" value="0" aria-label="Disabled input example" style=" height: 100px;"
-          disabled readonly>
- 
+      <div id="button-container" class="container p-1">
+        <input id ="numero" class="form-control " type="text" aria-label="Disabled input example" style=" height: 100px;" readonly>
+        <form  method="dialog">
           <div class="row justify-content-end p-1" style="height: 100px; ">
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
+            <button id = 'backspace' class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
               &#x232B;
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
+            <button value =" x " class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
               &times;
             </button>
 
           </div>
           <div class="row p-1" style="height: 100px; ">
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="1" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               1
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="2" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               2
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="3"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               3
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              &divide
+            <button value =" / " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+              &divide;
             </button>
           </div>
           <div class="row p-1" style="height: 100px;">
 
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="4" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               4
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="5"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               5
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="6"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               6
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button value =" + " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               +
             </button>
           </div>
           <div class="row p-1" style="height: 100px;">
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="7" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               7
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" name="number" value="8" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               8
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="number" value="9"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               9
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button value =" - " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               -
             </button>
           </div>
@@ -75,22 +76,56 @@
             <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               +\-
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="number" value="0"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               0
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button value = "." class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               .
             </button>
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button id = 'nice' class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               =
             </button>
           </div>
-       </div>
+        </form>
+      </div>
     </span>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  <script>
+    const display = document.getElementById('numero');
+    const container = document.getElementById('button-container');
+    const backSpace = document.getElementById('backspace');
+
+    container.addEventListener('click', function(event) {
+      if (event.target.tagName === "BUTTON") {
+        display.value = display.value + event.target.value;
+      }
+    })
+
+    backSpace.addEventListener('click', () => {
+      let field = display.value;
+      display.value = field.substring(0, field.length - 1)
+    })
+
+    backSpace.addEventListener('mousedown', () => {
+      
+      let mouseTimer;
+      mouseTimer = setTimeout( () => {
+        if (backSpace.onmousedown = true) {
+          display.value = "";
+
+        }
+
+      }, 1500 );
+
+      document.body.addEventListener('mouseup', () => {
+        if (mouseTimer) clearTimeout(mouseTimer)
+      });
+    })
+
+  </script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 </body>
 
 </html>
