@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET','POST'])
 def index():
     number = request.form.get('number')
-    postfix = infixToPostfix('(3 + 4) * 2 / (5 - 1)')
+    postfix = infixToPostfix('2 / 2')
     print(postfix)
     print(calculate(postfix))
     
@@ -17,16 +17,15 @@ def calculate(expression):
     for token in expression:
         if '0' <= token <= '9':
             stack.append(token)
-            print(stack)
         else:
             if token == '+':
-                stack.append(int(stack.pop(-2)) + int(stack.pop(-1)))
+                stack.append(float(stack.pop(-2)) + float(stack.pop(-1)))
             elif token == '-':
-                stack.append(int(stack.pop(-2)) - int(stack.pop(-1)))
+                stack.append(float(stack.pop(-2)) - float(stack.pop(-1)))
             elif token == '*':
-                stack.append(int(stack.pop(-2)) * int(stack.pop(-1)))
+                stack.append(float(stack.pop(-2)) * float(stack.pop(-1)))
             elif token == '/':
-                stack.append(int(stack.pop(-2)) / int(stack.pop(-1)))
+                stack.append(float(stack.pop(-2)) / float(stack.pop(-1)))
             # elif token == '^':
             #     stack.append(int(stack.pop(-2)) / int(stack.pop(-1)))
 
