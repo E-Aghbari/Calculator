@@ -76,11 +76,5 @@ def infixToPostfix(expression):
 
     return ' '.join(postfix)
 
-
-def associativity(operator):
-    if operator == '^':
-        return 'R'
-    return 'L'
-
 if __name__ == '__main__':
     app.run(debug = True)
