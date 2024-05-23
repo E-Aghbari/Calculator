@@ -3,9 +3,13 @@ const container = document.getElementById('button-container');
 const backSpace = document.getElementById('backspace');
 
 container.addEventListener('click', function(event) {
-  if (event.target.tagName === "BUTTON") {
+  if (event.target.name === "number") {
+    if(display.value === '0' ){
+      display.value = ''
+    }
     display.value = display.value + event.target.value;
-    console.log(display.value)
+  } else if (event.target.name === "operator") {
+    display.value = display.value + event.target.value;
   }
 })
 
@@ -21,7 +25,7 @@ backSpace.addEventListener('mousedown', () => {
     if (backSpace.onmousedown = true) {
       display.value = "";
     }
-  }, 1500 );
+  }, 500 );
 
   document.body.addEventListener('mouseup', () => {
     if (mouseTimer) clearTimeout(mouseTimer)

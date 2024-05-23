@@ -12,19 +12,19 @@
 </head>
 
 <body>
-
   <div class="container">
     <span class="container border position-absolute top-50 start-50 translate-middle"
       style="max-height: 1000px; max-width:440px;">
 
       <div id="button-container" class="container p-1">
-        <input id ="numero" class="form-control " type="text" aria-label="Disabled input example" style=" height: 100px;" readonly>
-        <form  method="dialog">
+        <form  method="post">
+          <input name = "equation" id ="numero" value="{{result if result else 0}}" class="form-control" type="text" aria-label="Disabled input example" style=" height: 100px;" readonly>
+
           <div class="row justify-content-end p-1" style="height: 100px; ">
-            <button id = 'backspace' class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
+            <button  type="button" id = 'backspace' class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
               &#x232B;
             </button>
-            <button value =" x " class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
+            <button name="operator" type="button" value =" * " class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
               &times;
             </button>
 
@@ -39,7 +39,7 @@
             <button type="button" name="number" value="3"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               3
             </button>
-            <button value =" / " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="operator" type="button" value =" / " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               &divide;
             </button>
           </div>
@@ -54,7 +54,7 @@
             <button type="button" name="number" value="6"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               6
             </button>
-            <button value =" + " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="operator" type = "button" value =" + " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               +
             </button>
           </div>
@@ -65,24 +65,24 @@
             <button type="button" name="number" value="8" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               8
             </button>
-            <button name="number" value="9"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="button" value="9" name="number"   class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               9
             </button>
-            <button value =" - " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="operator" type="button" value =" - " class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               -
             </button>
           </div>
           <div class="row p-1" style="height: 100px;">
-            <button class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               +\-
             </button>
-            <button name="number" value="0"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="number" type="button" value="0" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               0
             </button>
-            <button value = "." class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button  type="button" value = "." class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               .
             </button>
-            <button id = 'nice' class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="submit" id = 'nice' class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               =
             </button>
           </div>

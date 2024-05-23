@@ -1,23 +1,24 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 
 @app.route("/", methods=['GET','POST'])
 def index():
-    number = request.form.get('number')
-    postfix = infixToPostfix('(3+45)*2 /(1 - 5)')
-    print(postfix)
-    print(calculatePostfix(postfix))
-    
-    return render_template('index.html', number=number)
+    equation = request.form.get('equation')
+    postFix = infixToPostfix(equation)
+    result = calculatePostfix(postFix)
+    return render_template('index.html', result = result)
 
 def calculatePostfix(expression):
+    if not expression:
+        return None
+    
     stack = []
     tokens = expression.split()
 
     for token in tokens:
         if token.isdigit():
-            stack.append(float(token))
+            stack.append(int(token))
         else:
             operand2 = stack.pop()
             operand1 = stack.pop()
@@ -37,6 +38,9 @@ def calculatePostfix(expression):
 
 
 def infixToPostfix(expression):
+    if not expression:
+        return None
+
     stack = []
     postfix = []
     current_number = ''
