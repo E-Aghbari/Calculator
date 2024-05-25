@@ -4,10 +4,17 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET','POST'])
 def index():
-    equation = request.form.get('equation')
-    postFix = infixToPostfix(equation)
-    result = calculatePostfix(postFix)
-    return render_template('index.html', result = result)
+    if request.method == 'POST':
+        equation = request.form.get('equation')
+        print(equation)
+        if equation: 
+            postFix = infixToPostfix(equation)
+            result = calculatePostfix(postFix)
+            return str(result) 
+        else:
+            return "No equation provided", 400
+    else:
+        return render_template('index.html')  
 
 def calculatePostfix(expression):
     if not expression:
@@ -15,11 +22,11 @@ def calculatePostfix(expression):
     
     stack = []
     tokens = expression.split()
-
     for token in tokens:
-        if token.isdigit():
-            stack.append(int(token))
+        if token.isdigit() or '.' in token:
+            stack.append(float(token))
         else:
+            print(token)
             operand2 = stack.pop()
             operand1 = stack.pop()
             if token == '+':
@@ -48,7 +55,8 @@ def infixToPostfix(expression):
     associativity = {'^': 'R', '/': 'L', '*': 'L', '+': 'L', '-': 'L'}
 
     for token in expression:
-        if token.isdigit(): 
+        if token.isdigit() or token == '.': 
+            print(token)
             current_number += token
         elif token == ' ' and current_number: 
             postfix.append(current_number)
@@ -77,6 +85,8 @@ def infixToPostfix(expression):
 
     while stack:
         postfix.append(stack.pop())
+    
+    print(postfix)
 
     return ' '.join(postfix)
 

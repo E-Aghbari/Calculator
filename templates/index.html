@@ -17,7 +17,7 @@
       style="max-height: 1000px; max-width:440px;">
 
       <div id="button-container" class="container p-1">
-        <form  method="post">
+        <form id="calculator-form" method="post">
           <input name = "equation" id ="numero" value="{{result if result else 0}}" class="form-control" type="text" aria-label="Disabled input example" style=" height: 100px;" readonly>
 
           <div class="row justify-content-end p-1" style="height: 100px; ">
@@ -79,10 +79,10 @@
             <button name="number" type="button" value="0" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               0
             </button>
-            <button  type="button" value = "." class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button name="decimal" id="decimal" type="button" value = "." class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large" >
               .
             </button>
-            <button type="submit" id = 'nice' class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+            <button type="submit" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
               =
             </button>
           </div>
