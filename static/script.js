@@ -3,7 +3,7 @@ const container = document.getElementById('button-container');
 const backSpace = document.getElementById('backspace');
 const form = document.getElementById('calculator-form');
 const decimalButton = document.getElementById('decimal');
-
+let expression = '';
 
 form.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the traditional form submission which reloads the page.
@@ -23,6 +23,7 @@ form.addEventListener('submit', function(event) {
     if (xhr.status >= 200 && xhr.status < 300) {
       // This is the response from server
       console.log(xhr.responseText);
+      //display.value = xhr.responseText;
       display.value = xhr.responseText;
     } else {
       console.error('The request failed!');
@@ -30,21 +31,26 @@ form.addEventListener('submit', function(event) {
   };
 
   // Sending data to server
-  xhr.send('equation=' + encodeURIComponent(display.value));
+  xhr.send('equation=' + encodeURIComponent(expression));
   
 });
 
 
 container.addEventListener('click', function(event) {
- 
   if (event.target.name === "number") {
 
     if(display.value === '0' ){
       display.value = ''
     }
+
     display.value = display.value + event.target.value;
+    expression = expression + event.target.value;
+    console.log("expression be like " + expression);
+    
   } else if (event.target.name === "operator") {
-    display.value = display.value + event.target.value;
+    //display.value = display.value + event.target.value;
+    display.value = ''
+    expression = expression + event.target.value;
     decimalButton.disabled = false;
   } else if (event.target.name == 'decimal'){
     display.value = display.value + event.target.value;
@@ -66,7 +72,8 @@ backSpace.addEventListener('mousedown', () => {
   let mouseTimer;
   mouseTimer = setTimeout( () => {
     if (backSpace.onmousedown = true) {
-      display.value = "";
+      display.value = '';
+      expression = '';
     }
   }, 500 );
 
