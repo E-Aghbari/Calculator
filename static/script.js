@@ -4,6 +4,8 @@ const backSpace = document.getElementById('backspace');
 const form = document.getElementById('calculator-form');
 const decimalButton = document.getElementById('decimal');
 let expression = '';
+let longClick;
+
 
 form.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the traditional form submission which reloads the page.
@@ -61,26 +63,37 @@ container.addEventListener('click', function(event) {
 
 
 
-backSpace.addEventListener('click', () => {
-  const field = display.value;
-  display.value = field.substring(0, field.length - 1)
-  decimalState();
-})
-
 backSpace.addEventListener('mousedown', () => {
   
   let mouseTimer;
   mouseTimer = setTimeout( () => {
     if (backSpace.onmousedown = true) {
-      display.value = '';
-      expression = '';
+      longClick = true;
+      display.value = '0';
+      expression = '0';
     }
   }, 500 );
+
 
   document.body.addEventListener('mouseup', () => {
     if (mouseTimer) clearTimeout(mouseTimer)
   });
 })
+
+backSpace.addEventListener('click', () => {
+  if (longClick) {
+    longClick = false;
+    return;
+  }
+
+  const field = display.value;
+  display.value = field.substring(0, field.length - 1)
+  decimalState();
+  if (display.value === ''){
+    display.value = '0';
+  }
+})
+
 
 function decimalState(){
   const numbers = display.value.split(/[\+\-\*\/]/);
