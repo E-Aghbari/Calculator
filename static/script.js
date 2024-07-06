@@ -4,6 +4,7 @@ const backSpace = document.getElementById('backspace');
 const form = document.getElementById('calculator-form');
 const decimalButton = document.getElementById('decimal');
 let expression = '';
+let operator;
 let longClick;
 
 
@@ -48,9 +49,26 @@ container.addEventListener('click', function(event) {
     display.value = display.value + event.target.value;
     expression = expression + event.target.value;
     console.log("expression be like " + expression);
-    
+    if (operator != null){
+      operator.disabled = false;
+      operator = null;
+    }
   } else if (event.target.name === "operator") {
-    //display.value = display.value + event.target.value;
+
+    const numbers = display.value;
+    if (operator != null){
+      console.log('u sure?')
+      operator.disabled = false;
+      expression = expression.substring(0, expression.length - 1)
+    }
+    // if (numbers.pop() === ){
+
+    // }
+
+
+    operator = event.target;
+    event.target.disabled = true;
+
     display.value = ''
     expression = expression + event.target.value;
     decimalButton.disabled = false;
@@ -69,8 +87,7 @@ backSpace.addEventListener('mousedown', () => {
   mouseTimer = setTimeout( () => {
     if (backSpace.onmousedown = true) {
       longClick = true;
-      display.value = '0';
-      expression = '0';
+      resetCalculator();
     }
   }, 500 );
 
@@ -103,5 +120,15 @@ function decimalState(){
     decimalButton.disabled = true;
   } else {
     decimalButton.disabled = false;
+  }
+}
+
+function resetCalculator(){
+  display.value = '0';
+  expression = '';
+  decimalState()
+
+  if (operator != null){
+  operator.disabled = false;
   }
 }
