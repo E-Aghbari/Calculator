@@ -55,16 +55,11 @@ container.addEventListener('click', function(event) {
     }
   } else if (event.target.name === "operator") {
 
-    const numbers = display.value;
     if (operator != null){
       console.log('u sure?')
       operator.disabled = false;
       expression = expression.substring(0, expression.length - 1)
     }
-    // if (numbers.pop() === ){
-
-    // }
-
 
     operator = event.target;
     event.target.disabled = true;
