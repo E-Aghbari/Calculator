@@ -69,6 +69,8 @@ container.addEventListener('click', function(event) {
     decimalButton.disabled = false;
   } else if (event.target.name == 'decimal'){
     display.value = display.value + event.target.value;
+    expression = expression + event.target.value;
+
     decimalButton.disabled = true;
 
   }
