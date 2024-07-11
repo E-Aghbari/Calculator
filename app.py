@@ -23,6 +23,7 @@ def calculatePostfix(expression):
     stack = []
     tokens = expression.split()
     for token in tokens:
+        print("token isss", token)
         if token.isdigit() or '.' in token:
             stack.append(float(token))
         else:
@@ -40,8 +41,11 @@ def calculatePostfix(expression):
             # elif token == '^':
             #     stack.append(int(stack.pop(-2)) / int(stack.pop(-1)))
 
-
-    return stack.pop()
+    result = stack.pop()
+    if result.is_integer():
+        return int(result)
+    else:
+        return result
 
 
 def infixToPostfix(expression):
