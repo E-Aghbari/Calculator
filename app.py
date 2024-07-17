@@ -6,7 +6,6 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         equation = request.form.get('equation')
-        print(equation)
         if equation: 
             postFix = infixToPostfix(equation)
             result = calculatePostfix(postFix)
@@ -23,11 +22,9 @@ def calculatePostfix(expression):
     stack = []
     tokens = expression.split()
     for token in tokens:
-        print("token isss", token)
         if token.isdigit() or '.' in token:
             stack.append(float(token))
         else:
-            print(token)
             operand2 = stack.pop()
             operand1 = stack.pop()
             if token == '+':
@@ -60,7 +57,6 @@ def infixToPostfix(expression):
 
     for token in expression:
         if token.isdigit() or token == '.': 
-            print(token)
             current_number += token
         elif token == ' ' and current_number: 
             postfix.append(current_number)
@@ -90,8 +86,6 @@ def infixToPostfix(expression):
     while stack:
         postfix.append(stack.pop())
     
-    print(postfix)
-
     return ' '.join(postfix)
 
 if __name__ == '__main__':

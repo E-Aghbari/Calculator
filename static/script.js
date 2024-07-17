@@ -48,7 +48,6 @@ container.addEventListener('click', function(event) {
 
     display.value = display.value + event.target.value;
     expression = expression + event.target.value;
-    console.log("expression be like " + expression);
     if (operator != null){
       operator.disabled = false;
       operator = null;
@@ -56,7 +55,6 @@ container.addEventListener('click', function(event) {
   } else if (event.target.name === "operator") {
 
     if (operator != null){
-      console.log('u sure?')
       operator.disabled = false;
       expression = expression.substring(0, expression.length - 1)
     }
