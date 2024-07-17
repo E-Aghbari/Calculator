@@ -6,89 +6,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+ 
+  <link rel="stylesheet" href= "{{ url_for('static',filename='styles.css') }}">
 </head>
 
 <body>
-  <div class="container">
-    <span class="container border position-absolute top-50 start-50 translate-middle"
-      style="max-height: 1000px; max-width:440px;">
+  <div class="calculator">
+    <input class="calculator__output" name = "equation" id ="numero" value="{{result if result else 0}}" class="form-control" type="text" aria-label="Disabled input example"   readonly>
 
-      <div id="button-container" class="container p-1">
+      <div class="calculator__keys" id = "button-container">
         <form id="calculator-form" method="post">
-          <input name = "equation" id ="numero" value="{{result if result else 0}}" class="form-control" type="text" aria-label="Disabled input example" style=" height: 100px;" readonly>
+          <button name="operator" type = "button" value ="+" class="calculator__key calculator__key--operator" >
+            +
+          </button>
+          <button name="operator" type="button" value ="-" class="calculator__key calculator__key--operator" >
+            -
+          </button>
+          <button name="operator" type="button" value ="*" class="calculator__key calculator__key--operator"  >
+            &times;
+          </button>
+          <button name="operator" type="button" value ="/" class="calculator__key calculator__key--operator" >
+            &divide;
+            </button>
 
-          <div class="row justify-content-end p-1" style="height: 100px; ">
-            <button  type="button" id = 'backspace' class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
-              &#x232B;
+
+
+            <button type="button" name="number" value="1" class="calculator__key"  >
+            1
             </button>
-            <button name="operator" type="button" value ="*" class="col m-1 btn btn-primary" style=" max-width: 100px; height:  84px; font-size:x-large; ">
-              &times;
+            <button type="button" name="number" value="2" class="calculator__key"  >
+            2
+            </button>
+            <button type="button" name="number" value="3"  class="calculator__key" >
+            3
             </button>
 
-          </div>
-          <div class="row p-1" style="height: 100px; ">
-            <button type="button" name="number" value="1" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              1
+            <button type="button" name="number" value="4" class="calculator__key" >
+            4
             </button>
-            <button type="button" name="number" value="2" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              2
+            <button type="button" name="number" value="5"  class="calculator__key" >
+            5
             </button>
-            <button type="button" name="number" value="3"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              3
+            <button type="button" name="number" value="6"  class="calculator__key" >
+            6
             </button>
-            <button name="operator" type="button" value ="/" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              &divide;
-            </button>
-          </div>
-          <div class="row p-1" style="height: 100px;">
 
-            <button type="button" name="number" value="4" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              4
+            <button type="button" name="number" value="7" class="calculator__key" >
+            7
             </button>
-            <button type="button" name="number" value="5"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              5
+
+            <button type="button" name="number" value="8" class="calculator__key" >
+            8
             </button>
-            <button type="button" name="number" value="6"  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              6
+
+            <button type="button" value="9" name="number" class="calculator__key" >
+            9
             </button>
-            <button name="operator" type = "button" value ="+" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              +
-            </button>
-          </div>
-          <div class="row p-1" style="height: 100px;">
-            <button type="button" name="number" value="7" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              7
-            </button>
-            <button type="button" name="number" value="8" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              8
-            </button>
-            <button type="button" value="9" name="number"   class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              9
-            </button>
-            <button name="operator" type="button" value ="-" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              -
-            </button>
-          </div>
-          <div class="row p-1" style="height: 100px;">
-            <button  class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              +\-
-            </button>
-            <button name="number" type="button" value="0" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
+
+            <button name="number" type="button" value="0" class="calculator__key"  >
               0
             </button>
-            <button name="decimal" id="decimal" type="button" value = "." class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large" >
-              .
+
+            <button name="decimal" id="decimal" type="button" value = "." class="calculator__key"  >
+            .
             </button>
-            <button type="submit" class="col m-1 btn btn-primary" style=" max-width: 100px; font-size:x-large">
-              =
+
+            <button  type="button" id = 'backspace' class="calculator__key"  >
+              &#x232B;
             </button>
-          </div>
+            
+            <button type="submit" class="calculator__key calculator__key--enter" >
+            =
+            </button>
         </form>
       </div>
-    </span>
   </div>
   <script src="{{url_for('static', filename='script.js')}}"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

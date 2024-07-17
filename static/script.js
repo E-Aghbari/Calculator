@@ -62,7 +62,7 @@ container.addEventListener('click', function(event) {
     }
 
     operator = event.target;
-    event.target.disabled = true;
+    operator.disabled = true;
 
     display.value = ''
     expression = expression + event.target.value;
@@ -81,7 +81,7 @@ backSpace.addEventListener('mousedown', () => {
   
   let mouseTimer;
   mouseTimer = setTimeout( () => {
-    if (backSpace.onmousedown = true) {
+    if (backSpace.onmousedown = true) { 
       longClick = true;
       resetCalculator();
     }
@@ -101,6 +101,7 @@ backSpace.addEventListener('click', () => {
 
   const field = display.value;
   display.value = field.substring(0, field.length - 1)
+  expression = expression.substring(0, expression.length - 1)
   decimalState();
   if (display.value === ''){
     display.value = '0';
